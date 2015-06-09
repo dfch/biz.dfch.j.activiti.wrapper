@@ -17,25 +17,27 @@
 package biz.dfch.activiti.wrapper.domain;
 
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.validation.constraints.NotNull;
 
 public class ProcessMetadata {
 
-    @NotNull
+    @NotEmpty
     private String assetId;
-    @NotNull
+    @NotEmpty
     private String assetType;
-    @NotNull
+    @NotEmpty
     private String action;
-    @NotNull
+    @NotEmpty
     private String decisionId;
-    @NotNull
+    @NotEmpty
     private String userId;
-    @NotNull
+    @NotEmpty
     private String tenantId;
-    @NotNull
+    @NotEmpty
     private String type;
-    @NotNull
+    @NotEmpty
     private String bpeURI;
 
     public String getAssetId() {
