@@ -45,9 +45,36 @@ public class ProcessInvocationControllerTest {
     }
 
     @Test
-    public void invokeProcess() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("Greetings from Spring Boot!")));
+    public void invokeProcessWithValidPayloadReturnsHttpStatusOk() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.post("/api/process-invocation")
+                .accept(MediaType.APPLICATION_JSON)
+                .content("{" +
+                        "    \"assetId\": \"123\"," +
+                        "    \"assetType\": \"System\"," +
+                        "    \"action\": \"create\"," +
+                        "    \"decisionId\": \"1234\"," +
+                        "    \"userId\": \"12345\"," +
+                        "    \"tenantId\": \"123456\"," +
+                        "    \"type\": \"PRE-ACTION\"," +
+                        "    \"bpeURI\": \"http://localhost\"" +
+                        "}"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void invokeProcessWithInValidPayloadReturnsHttpStatusBadRequest() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.post("/api/process-invocation")
+                .accept(MediaType.APPLICATION_JSON)
+                .content("{" +
+                        "    \"assetId\": \"\"," +
+                        "    \"assetType\": \"System\"," +
+                        "    \"action\": \"create\"," +
+                        "    \"decisionId\": \"1234\"," +
+                        "    \"userId\": \"12345\"," +
+                        "    \"tenantId\": \"123456\"," +
+                        "    \"type\": \"PRE-ACTION\"," +
+                        "    \"bpeURI\": \"http://localhost\"" +
+                        "}"))
+                .andExpect(status().isBadRequest());
     }
 }
