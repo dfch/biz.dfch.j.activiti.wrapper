@@ -16,9 +16,13 @@
 
 package biz.dfch.activiti.wrapper.controller;
 
+import biz.dfch.activiti.wrapper.service.ActivitiService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockServletContext;
@@ -28,8 +32,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -37,17 +39,25 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebAppConfiguration
 public class ProcessInvocationControllerTest {
 
+    @Mock
+    private ActivitiService activitiService;
+
+    @InjectMocks
+    private ProcessInvocationController processInvocationController;
+
     private MockMvc mvc;
 
     @Before
     public void setUp() throws Exception {
-        mvc = MockMvcBuilders.standaloneSetup(new ProcessInvocationController()).build();
+        MockitoAnnotations.initMocks(this);
+        this.mvc = MockMvcBuilders.standaloneSetup(processInvocationController).build();
     }
 
     @Test
     public void invokeProcessWithValidPayloadReturnsHttpStatusOk() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.post("/api/process-invocation")
+        mvc.perform(MockMvcRequestBuilders.post("/process-invocation")
                 .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
                 .content("{" +
                         "    \"assetId\": \"123\"," +
                         "    \"assetType\": \"System\"," +
@@ -63,10 +73,28 @@ public class ProcessInvocationControllerTest {
 
     @Test
     public void invokeProcessWithInValidPayloadReturnsHttpStatusBadRequest() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.post("/api/process-invocation")
+        mvc.perform(MockMvcRequestBuilders.post("/process-invocation")
                 .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
                 .content("{" +
                         "    \"assetId\": \"\"," +
+                        "    \"assetType\": \"System\"," +
+                        "    \"action\": \"create\"," +
+                        "    \"decisionId\": \"1234\"," +
+                        "    \"userId\": \"12345\"," +
+                        "    \"tenantId\": \"123456\"," +
+                        "    \"type\": \"PRE-ACTION\"," +
+                        "    \"bpeURI\": \"http://localhost\"" +
+                        "}"))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void invokeProcessWithMissingAttributeInPayloadReturnsHttpStatusBadRequest() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.post("/process-invocation")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{" +
                         "    \"assetType\": \"System\"," +
                         "    \"action\": \"create\"," +
                         "    \"decisionId\": \"1234\"," +
