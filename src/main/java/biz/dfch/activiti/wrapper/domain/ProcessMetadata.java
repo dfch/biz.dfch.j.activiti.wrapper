@@ -16,7 +16,8 @@
 
 package biz.dfch.activiti.wrapper.domain;
 
-import com.sun.istack.internal.NotNull;
+
+import javax.validation.constraints.NotNull;
 
 public class ProcessMetadata {
 
