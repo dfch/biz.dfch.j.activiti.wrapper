@@ -32,6 +32,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -104,5 +106,25 @@ public class ProcessInvocationControllerTest {
                         "    \"bpeURI\": \"http://localhost\"" +
                         "}"))
                 .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void invokeProcessWithValidPayloadCallsActivityService() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.post("/process-invocation")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{" +
+                        "    \"assetId\": \"123\"," +
+                        "    \"assetType\": \"System\"," +
+                        "    \"action\": \"create\"," +
+                        "    \"decisionId\": \"1234\"," +
+                        "    \"userId\": \"12345\"," +
+                        "    \"tenantId\": \"123456\"," +
+                        "    \"type\": \"PRE-ACTION\"," +
+                        "    \"bpeURI\": \"http://localhost\"" +
+                        "}"))
+                .andExpect(status().isOk());
+
+        verify(activitiService).invokeProcess(any());
     }
 }
