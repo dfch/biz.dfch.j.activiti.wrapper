@@ -1,5 +1,4 @@
 [![License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg)](https://github.com/dfch/biz.dfch.j.activiti.wrapper/blob/master/LICENSE)
-
 # biz.dfch.j.activiti.wrapper
 
 REST wrapper for Activiti workflow invocation
