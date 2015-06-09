@@ -36,6 +36,8 @@ import java.net.URISyntaxException;
 @Service
 public class ActivitiService {
 
+    public static final Logger LOG = Logger.getLogger(ActivitiService.class);
+
     @Value("${activiti.uri}")
     private String activitiUri;
 
@@ -48,9 +50,9 @@ public class ActivitiService {
     @Autowired
     private ObjectMapper objectMapper;
 
-    public static final Logger LOG = Logger.getLogger(ActivitiService.class);
-
     public void invokeProcess(ProcessMetadata processMetadata) {
+
+        LOG.info("Start process at activity server '" + activitiUri + "'");
 
         try {
             String response = Request
@@ -60,7 +62,7 @@ public class ActivitiService {
                     .execute()
                     .returnContent()
                     .asString();
-            LOG.info(objectMapper.writeValueAsString(response));
+            LOG.info("Response from activiti engine: " + objectMapper.writeValueAsString(response));
         } catch (IOException e) {
             throw new ActivityException("IOException while sending request to Activiti", e);
         }
