@@ -29,6 +29,6 @@ public class ActivitiService {
         // Process-name aufschlüsselung
         // fill variables into variable list
         // activitiUri, activitUser, activitiPass
-
+        // throw activity exception
     }
 }
