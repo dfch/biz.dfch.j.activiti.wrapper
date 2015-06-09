@@ -24,9 +24,15 @@ import org.springframework.context.ApplicationContext;
 public class Application {
 
     /**
-     * Application main method, where the activitiUri, activitUser, activitiPassword have to be passed.
+     * Application main method
      *
-     * @param args command line arguments (activitiUri, activitUser, activitiPassword)
+     * HINT: Default properties could be overridden by command line arguments:
+     *
+     *  --activiti.uri="VALUE"
+     *  --activiti.user="VALUE"
+     *  --activiti.password="VALUE"
+     *
+     * @param args command line arguments
      */
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
