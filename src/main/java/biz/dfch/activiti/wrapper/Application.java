@@ -23,7 +23,12 @@ import org.springframework.context.ApplicationContext;
 @SpringBootApplication
 public class Application {
 
+    /**
+     * Application main method, where the activitiUri, activitUser, activitiPassword have to be passed.
+     *
+     * @param args command line arguments (activitiUri, activitUser, activitiPassword)
+     */
     public static void main(String[] args) {
-        ApplicationContext ctx = SpringApplication.run(Application.class, args);
+        SpringApplication.run(Application.class, args);
     }
 }
