@@ -71,8 +71,6 @@ public class ActivitiService {
     private ActivitiProcessMetadata createBody(ProcessMetadata processMetadata) {
         ActivitiProcessMetadata activitiProcessMetadata = new ActivitiProcessMetadata();
         activitiProcessMetadata.setProcessDefinitionKey(createProcessDefinitionKey(processMetadata));
-        activitiProcessMetadata.setBusinessKey("");
-        activitiProcessMetadata.setTenantId(processMetadata.getTenantId());
         activitiProcessMetadata.setVariables(ProcessMetadataConverter.convertToProcessVariables(processMetadata));
         return activitiProcessMetadata;
     }
