@@ -14,10 +14,12 @@ REST wrapper for Activiti workflow invocation
 </server>
 ```
 2. Build the project
+
 * `mvn -Prelease clean install`
 
 3. Add a new version to the Bintray package
 4. Release the application by executing the following commands
+
 * `mvn release:prepare`
 * `mvn release:perform`
 
