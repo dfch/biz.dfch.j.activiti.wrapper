@@ -23,6 +23,8 @@ REST wrapper for Activiti workflow invocation
 * `mvn release:prepare`
 * `mvn release:perform`
 
+For more details see [here](http://veithen.github.io/2013/05/26/github-bintray-maven-release-plugin.html)
+
 
 ## How to run the application
 
@@ -32,5 +34,6 @@ REST wrapper for Activiti workflow invocation
 `java -jar activiti.wrapper-0.0.1.jar --activiti.uri="SERVER_BASE_URI" --activiti.user="ACTIVITI_USER" --activiti.password="ACTIVITI_PASSWORD"`
 
 
-HINT: To test the application install and run the [eternnoir/activiti docker image](https://registry.hub.docker.com/u/eternnoir/activiti/)
+**HINT**
+To test the application install and run the [eternnoir/activiti docker image](https://registry.hub.docker.com/u/eternnoir/activiti/)
 
