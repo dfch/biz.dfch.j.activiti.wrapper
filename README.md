@@ -3,6 +3,25 @@
 
 REST wrapper for Activiti workflow invocation
 
+## Release manual
+
+1. Add the following server to your maven `settings.xml`
+```
+<server>
+  <id>bintray</id>
+  <username>{bintray-user}</username>
+  <password>{bintray-api-key}</password>
+</server>
+```
+2. Build the project
+* `mvn -Prelease clean install`
+
+3. Add a new version to the Bintray package
+4. Release the application by executing the following commands
+* `mvn release:prepare`
+* `mvn release:perform`
+
+
 ## How to run the application
 
 * Build the jar by executing `mvn clean install` on the project root
