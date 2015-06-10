@@ -18,14 +18,17 @@ package biz.dfch.activiti.wrapper.converter;
 
 import biz.dfch.activiti.wrapper.domain.ProcessMetadata;
 import biz.dfch.activiti.wrapper.domain.ProcessVariable;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProcessMetadataConverter {
 
+    private static final Logger LOG = Logger.getLogger(ProcessMetadataConverter.class);
 
     public static List<ProcessVariable> convertToProcessVariables(ProcessMetadata processMetadata) {
+        LOG.debug("Process metadata conversion started");
         List<ProcessVariable> processVariables = new ArrayList<>();
         processVariables.add(new ProcessVariable("assetId", processMetadata.getAssetId()));
         processVariables.add(new ProcessVariable("assetType", processMetadata.getAssetType()));
@@ -35,6 +38,7 @@ public class ProcessMetadataConverter {
         processVariables.add(new ProcessVariable("tenantId", processMetadata.getTenantId()));
         processVariables.add(new ProcessVariable("type", processMetadata.getType()));
         processVariables.add(new ProcessVariable("bpeURI", processMetadata.getBpeURI()));
+        LOG.debug("Process metadata conversion finished");
         return processVariables;
     }
 }
