@@ -26,8 +26,11 @@ REST wrapper for Activiti workflow invocation
 
 ## How to run the application
 
-* Build the jar by executing `mvn clean install` on the project root
-* Run the application by executing the following command
+* Download the jar from [Bintray](https://bintray.com/rufer7/maven/biz.dfch.activiti.wrapper/view)
+* Run the application by executing the following command (Maybe you have to adjust the version in the command)
 
-`java -jar activiti.wrapper-0.0.1-SNAPSHOT.jar --activiti.uri="SERVER_BASE_URI" --activiti.user="ACTIVITI_USER" --activiti.password="ACTIVITI_PASSWORD"`
+`java -jar activiti.wrapper-0.0.1.jar --activiti.uri="SERVER_BASE_URI" --activiti.user="ACTIVITI_USER" --activiti.password="ACTIVITI_PASSWORD"`
+
+
+HINT: To test the application install and run the [eternnoir/activiti docker image](https://registry.hub.docker.com/u/eternnoir/activiti/)
 
