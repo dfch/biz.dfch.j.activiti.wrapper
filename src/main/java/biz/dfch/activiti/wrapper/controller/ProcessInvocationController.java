@@ -18,6 +18,8 @@ package biz.dfch.activiti.wrapper.controller;
 
 import biz.dfch.activiti.wrapper.domain.ProcessMetadata;
 import biz.dfch.activiti.wrapper.service.ActivitiService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,15 +32,23 @@ import javax.validation.Valid;
 @RequestMapping("/process-invocation")
 public class ProcessInvocationController {
 
-    public static final Logger LOG = Logger.getLogger(ProcessInvocationController.class);
+    private static final Logger LOG = Logger.getLogger(ProcessInvocationController.class);
 
     @Autowired
     private ActivitiService activitiService;
 
+    @Autowired
+    private ObjectMapper objectMapper;
+
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Void> invokeProcess(@Valid @RequestBody ProcessMetadata processMetadata) {
-        LOG.info("Got invoke process request");
+        LOG.info("POST /process-invocation called");
+        try {
+            LOG.debug(objectMapper.writeValueAsString(processMetadata));
+        } catch (JsonProcessingException e) {
+            LOG.error("Conversion of request body to JSON failed", e);
+        }
         activitiService.invokeProcess(processMetadata);
         return new ResponseEntity<>(HttpStatus.OK);
     }
