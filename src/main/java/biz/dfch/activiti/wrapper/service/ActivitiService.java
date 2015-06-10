@@ -86,11 +86,8 @@ public class ActivitiService {
 
     private URI getRequestUri() {
         try {
-            if (activitiUri.endsWith("/")) {
-                return new URI(activitiUri + "runtime/process-instances");
-            } else {
-                return new URI(activitiUri + "/runtime/process-instances");
-            }
+            String uriAsString = (activitiUri + "/runtime/process-instances").replaceAll("(?<!(http:|https:))[//]+", "/");
+            return new URI(uriAsString);
         } catch (URISyntaxException e) {
             throw new ActivityException("URI-conversion failed (activitiUri: " + activitiUri + ")", e);
         }
