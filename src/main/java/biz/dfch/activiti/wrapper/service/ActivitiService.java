@@ -53,7 +53,7 @@ public class ActivitiService {
 
     public void invokeProcess(ProcessMetadata processMetadata) {
 
-        LOG.info("Start process at activity server '" + activitiUri + "'");
+        LOG.info("Sending request to start process at activity server '" + activitiUri + "'");
 
         try {
             String response = Request
