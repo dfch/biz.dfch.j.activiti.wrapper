@@ -1,12 +1,12 @@
 /**
  * Copyright 2015 d-fens GmbH
- * <p/>
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * <p/>
+ * <p>
  * http://www.apache.org/licenses/LICENSE-2.0
- * <p/>
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -36,7 +36,8 @@ import java.net.URISyntaxException;
 @Service
 public class ActivitiService {
 
-    public static final Logger LOG = Logger.getLogger(ActivitiService.class);
+    // Add additional logging
+    private static final Logger LOG = Logger.getLogger(ActivitiService.class);
 
     @Value("${activiti.uri}")
     private String activitiUri;
@@ -62,7 +63,7 @@ public class ActivitiService {
                     .execute()
                     .returnContent()
                     .asString();
-            LOG.info("Response from activiti engine: " + objectMapper.writeValueAsString(response));
+            LOG.info("Got response from activiti engine: " + objectMapper.writeValueAsString(response));
         } catch (IOException e) {
             throw new ActivityException("IOException while sending request to Activiti", e);
         }
@@ -70,14 +71,18 @@ public class ActivitiService {
 
     private ActivitiProcessMetadata createBody(ProcessMetadata processMetadata) {
         ActivitiProcessMetadata activitiProcessMetadata = new ActivitiProcessMetadata();
-        activitiProcessMetadata.setProcessDefinitionKey(String.format("%s.%s.%s",
-                processMetadata.getAssetType(),
-                processMetadata.getAction(),
-                processMetadata.getType()));
+        activitiProcessMetadata.setProcessDefinitionKey(createProcessDefinitionKey(processMetadata));
         activitiProcessMetadata.setBusinessKey("");
         activitiProcessMetadata.setTenantId(processMetadata.getTenantId());
         activitiProcessMetadata.setVariables(ProcessMetadataConverter.convertToProcessVariables(processMetadata));
         return activitiProcessMetadata;
+    }
+
+    private String createProcessDefinitionKey(ProcessMetadata processMetadata) {
+        return String.format("%s.%s.%s",
+                processMetadata.getAssetType(),
+                processMetadata.getAction(),
+                processMetadata.getType());
     }
 
     private URI getRequestUri() {
@@ -88,7 +93,7 @@ public class ActivitiService {
                 return new URI(activitiUri + "/runtime/process-instances");
             }
         } catch (URISyntaxException e) {
-            throw new ActivityException("URI-conversion failed", e);
+            throw new ActivityException("URI-conversion failed (activitiUri: " + activitiUri + ")", e);
         }
     }
 
