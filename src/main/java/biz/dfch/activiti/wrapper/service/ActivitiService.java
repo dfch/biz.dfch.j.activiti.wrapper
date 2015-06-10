@@ -36,7 +36,6 @@ import java.net.URISyntaxException;
 @Service
 public class ActivitiService {
 
-    // Add additional logging
     private static final Logger LOG = Logger.getLogger(ActivitiService.class);
 
     @Value("${activiti.uri}")
