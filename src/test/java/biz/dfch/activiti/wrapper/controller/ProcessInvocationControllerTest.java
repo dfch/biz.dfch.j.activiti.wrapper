@@ -17,6 +17,7 @@
 package biz.dfch.activiti.wrapper.controller;
 
 import biz.dfch.activiti.wrapper.service.ActivitiService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -43,6 +44,9 @@ public class ProcessInvocationControllerTest {
 
     @Mock
     private ActivitiService activitiService;
+
+    @Mock
+    private ObjectMapper objectMapper;
 
     @InjectMocks
     private ProcessInvocationController processInvocationController;
