@@ -64,7 +64,7 @@ public class ActivitiService {
                     .asString();
             LOG.info("Got response from activiti engine: " + objectMapper.writeValueAsString(response));
         } catch (IOException e) {
-            throw new ActivityException("IOException while sending request to Activiti", e);
+            throw new ActivityException("Exception occured while sending request to Activiti", e);
         }
     }
 
