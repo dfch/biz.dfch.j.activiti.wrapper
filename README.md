@@ -5,6 +5,8 @@ REST wrapper for Activiti workflow invocation
 
 ## Release manual
 
+### Local release
+
 1. Add the following server to your maven `settings.xml`
 ```
 <server>
@@ -13,17 +15,25 @@ REST wrapper for Activiti workflow invocation
   <password>{bintray-api-key}</password>
 </server>
 ```
-2. Build the project
 
-* `mvn -Prelease clean install`
+2. Create `release` branch
 
-3. Add a new version to the Bintray package
-4. Release the application by executing the following commands
+3. Build the project
+
+* Execute `mvn -Prelease clean install` on sources
+
+4. Add a new version to the Bintray package
+5. Release the application by executing the following commands
 
 * `mvn release:prepare`
 * `mvn release:perform`
 
 For more details see [here](http://veithen.github.io/2013/05/26/github-bintray-maven-release-plugin.html)
+
+
+### Release on teamcity
+
+On TeamCity there is a release configuration defined for the project. Start the `release` plan and the project will be released and the generated artifact will be uploaded to [Bintray](https://bintray.com/rufer7/maven/biz.dfch.activiti.wrapper/view)
 
 
 ## How to run the application
@@ -36,4 +46,3 @@ For more details see [here](http://veithen.github.io/2013/05/26/github-bintray-m
 
 **HINT**
 To test the application install and run the [eternnoir/activiti docker image](https://registry.hub.docker.com/u/eternnoir/activiti/)
-
