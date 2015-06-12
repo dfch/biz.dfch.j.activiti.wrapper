@@ -13,7 +13,18 @@ The Activiti Wrapper project is a Spring Boot application, that wraps endpoints 
   Example value for SERVER_BASE_URI: `http://localhost:8080/activiti-rest/service`
 
 **HINT**
-To test the application install and run the [eternnoir/activiti docker image](https://registry.hub.docker.com/u/eternnoir/activiti/)
+To test the application do the following
+
+* Install mysql
+* Execute the following SQL commands
+```
+CREATE USER 'activiti'@'%.%.%.%' IDENTIFIED BY 'password';
+CREATE DATABASE IF NOT EXISTS `activiti_production` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`;
+GRANT ALL PRIVILEGES ON `activiti_production`.* TO 'activiti'@'%.%.%.%';
+```
+* Install and run the [eternnoir/activiti docker image](https://registry.hub.docker.com/u/eternnoir/activiti/)
+* Run the image with the following command
+  `sudo docker run -t -i -d --net=host -p 8080:8080 -e 'DB_HOST=localhost' -e 'DB_NAME=activiti_production' -e 'DB_USER=activiti' -e 'DB_PASS=password' -e 'DB_TYPE=mysql' eternnoir/activiti`
 
 
 ## Release manual
