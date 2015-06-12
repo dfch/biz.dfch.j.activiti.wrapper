@@ -27,7 +27,7 @@ public class Application {
      *
      * HINT: Default properties could be overridden by command line arguments:
      *
-     *  --activiti.uri="VALUE"
+     *  --activiti.uri="VALUE" (i.e. http://localhost:8080/activiti-rest/service)
      *  --activiti.user="VALUE"
      *  --activiti.password="VALUE"
      *

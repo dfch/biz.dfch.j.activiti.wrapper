@@ -1,0 +1,12 @@
+POST http://localhost:9000/api/process-invocation
+
+{
+    "assetId": "11",
+    "assetType": "System",
+    "action": "create",
+    "decisionId": "22",
+    "userId": "TestUser",
+    "tenantId": "44",
+    "type": "PRE-ACTION",
+    "bpeURI": "http://localhost/bpe"
+}
