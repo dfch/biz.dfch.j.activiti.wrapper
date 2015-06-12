@@ -5,7 +5,7 @@
 
     <groupId>biz.dfch.j</groupId>
     <artifactId>activiti.wrapper</artifactId>
-    <version>0.0.4-SNAPSHOT</version>
+    <version>0.0.5-SNAPSHOT</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
