@@ -22,9 +22,10 @@ CREATE USER 'activiti'@'%.%.%.%' IDENTIFIED BY 'password';
 CREATE DATABASE IF NOT EXISTS `activiti_production` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`;
 GRANT ALL PRIVILEGES ON `activiti_production`.* TO 'activiti'@'%.%.%.%';
 ```
+* Add `bind-address = 0.0.0.0` to the my.cnf file
 * Install and run the [eternnoir/activiti docker image](https://registry.hub.docker.com/u/eternnoir/activiti/)
-* Run the image with the following command
-  `sudo docker run -t -i -d --net=host -p 8080:8080 -e 'DB_HOST=localhost' -e 'DB_NAME=activiti_production' -e 'DB_USER=activiti' -e 'DB_PASS=password' -e 'DB_TYPE=mysql' eternnoir/activiti`
+* Run the image with the following command (replace DOCKER_HOST_IP with the value of `$(route -n | awk '/UG[ \t]/{print $2}')`)
+  `sudo docker run -t -i -d -p 8080:8080 -e 'DB_HOST=DOCKER_HOST_IP' -e 'DB_NAME=activiti_production' -e 'DB_USER=activiti' -e 'DB_PASS=password' -e 'DB_TYPE=mysql' eternnoir/activiti`
 
 
 ## Release manual
