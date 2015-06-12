@@ -5,8 +5,8 @@
              typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath"
              targetNamespace="Cool Processes">
   <process id="System.create.PRE-ACTION" name="SystemCreate PRE-ACTION Process" isExecutable="true">
-    <userTask id="usertask2" name="Approval task" activiti:assignee="${approver}">
-      <documentation>Approval request created by ${tenantId}</documentation>
+    <userTask id="usertask2" name="Approval task" activiti:assignee="kermit">
+      <documentation>Approval request created by ${userId}</documentation>
       <extensionElements>
         <activiti:formProperty id="approved" name="Decision" type="enum" required="true">
           <activiti:value id="true" name="Approve"></activiti:value>
@@ -16,14 +16,23 @@
       </extensionElements>
     </userTask>
     <scriptTask id="scriptTask1" name="Easy Script Task" activiti:autoStoreVariables="false">
-      <script>System.out.println("This process was invoked by activit wrapper")</script>
+      <script>System.out.println("The following variables have been passed to the process:");
+        System.out.println("assetId:" + execution.getVariable("assetId"));
+        System.out.println("assetType:" + execution.getVariable("assetType"));
+        System.out.println("action:" + execution.getVariable("action"));
+        System.out.println("decisionId:" + execution.getVariable("decisionId"));
+        System.out.println("userId:" + execution.getVariable("userId"));
+        System.out.println("tenantId:" + execution.getVariable("tenantId"));
+        System.out.println("type:" + execution.getVariable("type"));
+        System.out.println("bpeURI:" + execution.getVariable("bpeURI"));
+      </script>
     </scriptTask>
     <sequenceFlow id="sid-239BFE3E-152D-4437-80EE-891F851947CA" sourceRef="usertask2"
                   targetRef="scriptTask1"></sequenceFlow>
-    <endEvent id="sid-01C74F2C-5EB3-4987-9937-334B567577B9"></endEvent>
+    <endEvent id="sid-01C74F2C-5EB3-4987-9937-334B567577B9" name="End"></endEvent>
     <sequenceFlow id="sid-73C10710-C6D4-4AE7-A07F-E326060842C5" sourceRef="scriptTask1"
                   targetRef="sid-01C74F2C-5EB3-4987-9937-334B567577B9"></sequenceFlow>
-    <startEvent id="sid-FC36F9DC-1503-4C28-8EBF-9427144C6584"></startEvent>
+    <startEvent id="sid-FC36F9DC-1503-4C28-8EBF-9427144C6584" name="Start"></startEvent>
     <sequenceFlow id="sid-BEF55A1B-B40A-475B-9FC5-55EDAD8429B2" sourceRef="sid-FC36F9DC-1503-4C28-8EBF-9427144C6584"
                   targetRef="usertask2"></sequenceFlow>
   </process>
@@ -41,13 +50,11 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="sid-FC36F9DC-1503-4C28-8EBF-9427144C6584"
                         id="BPMNShape_sid-FC36F9DC-1503-4C28-8EBF-9427144C6584">
-        <omgdc:Bounds height="30.0" width="30.0" x="225.0" y="180.0"></omgdc:Bounds>
+        <omgdc:Bounds height="30.0" width="30.0" x="225.0" y="190.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="sid-BEF55A1B-B40A-475B-9FC5-55EDAD8429B2"
                        id="BPMNEdge_sid-BEF55A1B-B40A-475B-9FC5-55EDAD8429B2">
-        <omgdi:waypoint x="255.0" y="195.0"></omgdi:waypoint>
-        <omgdi:waypoint x="285.0" y="195.0"></omgdi:waypoint>
-        <omgdi:waypoint x="285.0" y="205.0"></omgdi:waypoint>
+        <omgdi:waypoint x="255.0" y="205.0"></omgdi:waypoint>
         <omgdi:waypoint x="315.0" y="205.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sid-73C10710-C6D4-4AE7-A07F-E326060842C5"

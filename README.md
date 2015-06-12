@@ -15,8 +15,7 @@ The Activiti Wrapper project is a Spring Boot application, that wraps endpoints 
 ## Test the application
 
 For testing install and run the [eternnoir/activiti docker image](https://registry.hub.docker.com/u/eternnoir/activiti/).
-**IMPORTANT**: Because the Activiti REST service and the explorer service both by default use their own in memory db you have to additionally spin up a MySQL-container as described in chapter []Linking to MySQL Container](**IMPORTANT**:
-                                                                                                                                                                                                                              Because the Activiti REST service and the explorer service both by default use their own in memory db you have to follow the)
+**IMPORTANT**: Because the Activiti REST service and the explorer service both by default use their own in memory db you have to additionally spin up a MySQL-container as described in chapter [Linking to MySQL Container](https://github.com/eternnoir/activiti#linking-to-mysql-container)
 
 Then upload the process `System.create.PRE-ACTION.bpmn20.xml`, which can be found in resources directory and execute the REST-request described in `RequestSample.txt`.
 
