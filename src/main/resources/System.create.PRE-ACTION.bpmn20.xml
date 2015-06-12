@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI"
+             typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath"
+             targetNamespace="Cool Processes">
+    <process id="System.create.PRE-ACTION" name="Simple approval process" isExecutable="true">
+        <userTask id="usertask2" name="Approval task" activiti:assignee="${approver}" activiti:dueDate="${duedate}">
+            <documentation>Approval request created by ${initiator}: ${instructions}</documentation>
+            <extensionElements>
+                <activiti:formProperty id="approved" name="Decision" type="enum" required="true">
+                    <activiti:value id="true" name="Approve"></activiti:value>
+                    <activiti:value id="false" name="Reject"></activiti:value>
+                </activiti:formProperty>
+                <activiti:formProperty id="motivation" name="Motivation" type="string"
+                                       required="true"></activiti:formProperty>
+            </extensionElements>
+        </userTask>
+        <scriptTask id="scriptTask1" name="Easy Script Task" activiti:autoStoreVariables="false">
+            <script>System.out.println("This process was invoked by activit wrapper")</script>
+        </scriptTask>
+        <sequenceFlow id="sid-239BFE3E-152D-4437-80EE-891F851947CA" sourceRef="usertask2"
+                      targetRef="scriptTask1"></sequenceFlow>
+        <endEvent id="sid-01C74F2C-5EB3-4987-9937-334B567577B9"></endEvent>
+        <sequenceFlow id="sid-73C10710-C6D4-4AE7-A07F-E326060842C5" sourceRef="scriptTask1"
+                      targetRef="sid-01C74F2C-5EB3-4987-9937-334B567577B9"></sequenceFlow>
+        <startEvent id="sid-FC36F9DC-1503-4C28-8EBF-9427144C6584"></startEvent>
+        <sequenceFlow id="sid-BEF55A1B-B40A-475B-9FC5-55EDAD8429B2" sourceRef="sid-FC36F9DC-1503-4C28-8EBF-9427144C6584"
+                      targetRef="usertask2"></sequenceFlow>
+    </process>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_System.create.PRE-ACTION">
+        <bpmndi:BPMNPlane bpmnElement="System.create.PRE-ACTION" id="BPMNPlane_System.create.PRE-ACTION">
+            <bpmndi:BPMNShape bpmnElement="usertask2" id="BPMNShape_usertask2">
+                <omgdc:Bounds height="55.0" width="105.0" x="315.0" y="177.5"></omgdc:Bounds>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="scriptTask1" id="BPMNShape_scriptTask1">
+                <omgdc:Bounds height="80.0" width="100.0" x="495.0" y="165.0"></omgdc:Bounds>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="sid-01C74F2C-5EB3-4987-9937-334B567577B9"
+                              id="BPMNShape_sid-01C74F2C-5EB3-4987-9937-334B567577B9">
+                <omgdc:Bounds height="28.0" width="28.0" x="640.0" y="191.0"></omgdc:Bounds>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="sid-FC36F9DC-1503-4C28-8EBF-9427144C6584"
+                              id="BPMNShape_sid-FC36F9DC-1503-4C28-8EBF-9427144C6584">
+                <omgdc:Bounds height="30.0" width="30.0" x="225.0" y="190.0"></omgdc:Bounds>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="sid-BEF55A1B-B40A-475B-9FC5-55EDAD8429B2"
+                             id="BPMNEdge_sid-BEF55A1B-B40A-475B-9FC5-55EDAD8429B2">
+                <omgdi:waypoint x="255.0" y="205.0"></omgdi:waypoint>
+                <omgdi:waypoint x="315.0" y="205.0"></omgdi:waypoint>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="sid-73C10710-C6D4-4AE7-A07F-E326060842C5"
+                             id="BPMNEdge_sid-73C10710-C6D4-4AE7-A07F-E326060842C5">
+                <omgdi:waypoint x="595.0" y="205.0"></omgdi:waypoint>
+                <omgdi:waypoint x="640.0" y="205.0"></omgdi:waypoint>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="sid-239BFE3E-152D-4437-80EE-891F851947CA"
+                             id="BPMNEdge_sid-239BFE3E-152D-4437-80EE-891F851947CA">
+                <omgdi:waypoint x="420.0" y="205.0"></omgdi:waypoint>
+                <omgdi:waypoint x="495.0" y="205.0"></omgdi:waypoint>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</definitions>
