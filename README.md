@@ -33,13 +33,13 @@ To test the application install and run the [eternnoir/activiti docker image](ht
 
 3. Build the project
 
-* Execute `mvn -Prelease clean install` on sources
+  * Execute `mvn -Prelease clean install` on sources
 
 4. Add a new version to the Bintray package
 5. Release the application by executing the following commands
 
-* `mvn release:prepare`
-* `mvn release:perform`
+  * `mvn release:prepare`
+  * `mvn release:perform`
 
 For more details see [here](http://veithen.github.io/2013/05/26/github-bintray-maven-release-plugin.html)
 
