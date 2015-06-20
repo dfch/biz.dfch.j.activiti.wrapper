@@ -5,7 +5,7 @@
 
     <groupId>biz.dfch.j</groupId>
     <artifactId>activiti.wrapper</artifactId>
-    <version>0.0.5-SNAPSHOT</version>
+    <version>0.0.5</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -43,7 +43,7 @@
         <connection>scm:git:https://github.com/dfch/biz.dfch.j.activiti.wrapper</connection>
         <developerConnection>scm:git:https://github.com/dfch/biz.dfch.j.activiti.wrapper</developerConnection>
         <url>https://github.com/dfch/biz.dfch.j.activiti.wrapper</url>
-        <tag>HEAD</tag>
+        <tag>activity.wrapper-0.0.5</tag>
     </scm>
 
     <properties>
