@@ -1,0 +1,30 @@
+{
+	"id": "9e9cdfa8-35d2-c9c4-5906-1c162df2f1b6",
+	"name": "ACTIVITI",
+	"order": [
+		"989b2dda-79a8-42cd-e38e-ad6417923c70"
+	],
+	"timestamp": 1434095406322,
+	"synced": false,
+	"requests": [
+		{
+			"id": "989b2dda-79a8-42cd-e38e-ad6417923c70",
+			"url": "http://192.168.188.134:8080/activiti-rest/service/runtime/process-instances",
+			"method": "POST",
+			"headers": "Authorization: Basic a2VybWl0Omtlcm1pdA==\nContent-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "",
+			"preRequestScript": "",
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://192.168.188.134:8080/activiti-rest/service/runtime/process-instances",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "9e9cdfa8-35d2-c9c4-5906-1c162df2f1b6",
+			"synced": false,
+			"rawModeData": "{\"processDefinitionKey\":\"System.create.PRE-ACTION\",\"businessKey\":null,\"tenantId\":null,\"variables\":[{\"name\":\"assetId\",\"value\":\"123\"},{\"name\":\"assetType\",\"value\":\"System\"},{\"name\":\"action\",\"value\":\"create\"},{\"name\":\"decisionId\",\"value\":\"1234\"},{\"name\":\"userId\",\"value\":\"12345\"},{\"name\":\"tenantId\",\"value\":\"123456\"},{\"name\":\"type\",\"value\":\"PRE-ACTION\"},{\"name\":\"bpeURI\",\"value\":\"http://sdfadfasdf\"}]}"
+		}
+	]
+}
