@@ -1,0 +1,31 @@
+{
+	"id": "ba332432-6cb6-8429-1d86-77f0313f8411",
+	"name": "ACTIVITI-Wrapper",
+	"order": [
+		"acd750e1-763b-059a-a4b3-b8742727af81"
+	],
+	"timestamp": 1434095435608,
+	"synced": false,
+	"requests": [
+		{
+			"id": "acd750e1-763b-059a-a4b3-b8742727af81",
+			"headers": "Content-Type: application/json\n",
+			"url": "localhost:9000/api/process-invocation",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1434111462917,
+			"name": "localhost:9000/api/process-invocation",
+			"description": "",
+			"collectionId": "ba332432-6cb6-8429-1d86-77f0313f8411",
+			"synced": false,
+			"rawModeData": "{\r\n    \"assetId\": \"11\",\r\n    \"assetType\": \"System\",\r\n    \"action\": \"create\",\r\n    \"decisionId\": \"22\",\r\n    \"userId\": \"TestUser\",\r\n    \"tenantId\": \"44\",\r\n    \"type\": \"PRE-ACTION\",\r\n    \"bpeURI\": \"http://localhost/bpe\"\r\n}"
+		}
+	]
+}
