@@ -50,4 +50,4 @@ For more details see [here](http://veithen.github.io/2013/05/26/github-bintray-m
 
 ### Release on TeamCity
 
-On TeamCity there is a release configuration defined for the project. Start the `release` plan and the project will be released and the generated artifact will be uploaded to [Bintray](https://bintray.com/rufer7/maven/biz.dfch.activiti.wrapper/view)
+On TeamCity there is a release configuration defined for the project. When starting the `release` plan the project will be released and the generated artifact will be uploaded to [Bintray](https://bintray.com/rufer7/maven/biz.dfch.activiti.wrapper/view)
