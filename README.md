@@ -5,7 +5,7 @@ The Activiti Wrapper project is a Spring Boot application, that wraps endpoints 
 
 ## How to run the application
 
-* Download the jar from [Bintray](https://bintray.com/rufer7/maven/biz.dfch.activiti.wrapper/view)
+* Download the jar from [Maven Central Repository](http://search.maven.org/#artifactdetails%7Cbiz.dfch.j%7Cactiviti.wrapper%7C0.0.6%7Cjar)
 * Run the application by executing the following command (Maybe you have to adjust the version in the command)
 
   `java -jar activiti.wrapper-0.0.1.jar --activiti.uri="SERVER_BASE_URI" --activiti.user="ACTIVITI_USER" --activiti.password="ACTIVITI_PASSWORD"`
@@ -26,11 +26,24 @@ Then upload the process `System.create.PRE-ACTION.bpmn20.xml`, which can be foun
 
 1. Add the following server to your maven `settings.xml`
   ```
-  <server>
-    <id>bintray</id>
-    <username>{bintray-user}</username>
-    <password>{bintray-api-key}</password>
-  </server>
+    <server>
+      <id>ossrh</id>
+      <username>USERNAME</username>
+      <password>PASSWORD</password>
+    </server>
+  ```
+
+  ```
+  <profile>
+      <id>ossrh</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <gpg.executable>gpg2</gpg.executable>
+        <gpg.passphrase>GPG_PASSWORD</gpg.passphrase>
+      </properties>
+    </profile>
   ```
 
 2. Create `release` branch
@@ -39,13 +52,10 @@ Then upload the process `System.create.PRE-ACTION.bpmn20.xml`, which can be foun
 
   * Execute `mvn -Prelease clean install` on sources
 
-4. Add a new version to the Bintray package
-5. Release the application by executing the following commands
+4. Release the application by executing the following commands
 
   * `mvn release:prepare`
   * `mvn release:perform`
-
-For more details see [here](http://veithen.github.io/2013/05/26/github-bintray-maven-release-plugin.html)
 
 
 ### Release on TeamCity
