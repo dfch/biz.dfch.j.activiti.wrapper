@@ -60,4 +60,4 @@ Then upload the process `System.create.PRE-ACTION.bpmn20.xml`, which can be foun
 
 ### Release on TeamCity
 
-On TeamCity there is a release configuration defined for the project. When starting the `release` plan the project will be released and the generated artifact will be uploaded to [Bintray](https://bintray.com/rufer7/maven/biz.dfch.activiti.wrapper/view)
+On TeamCity there is a release configuration defined for the project. When starting the `release` plan the project will be released and the generated artifact will be uploaded to [Maven Central Repository](http://search.maven.org/#artifactdetails%7Cbiz.dfch.j%7Cactiviti.wrapper%7C0.0.6%7Cjar)
