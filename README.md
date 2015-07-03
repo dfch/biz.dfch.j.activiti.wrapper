@@ -26,27 +26,27 @@ Then upload the process `System.create.PRE-ACTION.bpmn20.xml`, which can be foun
 
 1. Add the following server to your maven `settings.xml`
   ```
-    <server>
-      <id>ossrh</id>
-      <username>USERNAME</username>
-      <password>PASSWORD</password>
-    </server>
+  <server>
+    <id>ossrh</id>
+    <username>USERNAME</username>
+    <password>PASSWORD</password>
+  </server>
   ```
 
   ```
   <profile>
-      <id>ossrh</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-      <properties>
-        <gpg.executable>gpg2</gpg.executable>
-        <gpg.passphrase>GPG_PASSWORD</gpg.passphrase>
-      </properties>
-    </profile>
+    <id>ossrh</id>
+    <activation>
+      <activeByDefault>true</activeByDefault>
+    </activation>
+    <properties>
+      <gpg.executable>gpg2</gpg.executable>
+      <gpg.passphrase>GPG_PASSWORD</gpg.passphrase>
+    </properties>
+  </profile>
   ```
 
-2. Create `release` branch
+2. Create branch with name `release`
 
 3. Build the project
 
