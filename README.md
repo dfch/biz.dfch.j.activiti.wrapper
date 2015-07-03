@@ -43,7 +43,7 @@ Then upload the process `System.create.PRE-ACTION.bpmn20.xml`, which can be foun
         <gpg.executable>gpg2</gpg.executable>
         <gpg.passphrase>GPG_PASSWORD</gpg.passphrase>
       </properties>
-    </profile>
+  </profile>
   ```
 
 2. Create `release` branch
