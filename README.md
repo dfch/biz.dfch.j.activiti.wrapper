@@ -1,5 +1,6 @@
-[![License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg)](https://github.com/dfch/biz.dfch.j.activiti.wrapper/blob/master/LICENSE)
 # biz.dfch.j.activiti.wrapper
+[![Build Status](https://build.dfch.biz/app/rest/builds/buildType:(id:Java_BizDfchJActivitiWrapper_Build_2)/statusIcon)](https://build.dfch.biz/viewType.html?buildTypeId=Java_BizDfchJActivitiWrapper_Build_2)
+[![License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg)](https://github.com/dfch/biz.dfch.j.activiti.wrapper/blob/master/LICENSE)
 
 The Activiti Wrapper project is a Spring Boot application, that wraps endpoints of the activiti API. Activit wrapper exposes an endpoint for invocation of processes on Activiti using Activitis REST api. To call the wrapper no authentication is needed. The authentication is done by the wrapper itself and can be configured on startup.
 
